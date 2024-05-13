@@ -1,6 +1,7 @@
 import { Product, Selection } from '@/routes/root';
 import { Button } from './ui/button';
 import { useState } from 'react';
+import { Input } from './ui/input';
 
 export default function ProductPage({
   title,
@@ -11,9 +12,8 @@ export default function ProductPage({
   addToCart,
 }: Product & { addToCart: (product: Selection) => void }) {
   const [count, setCount] = useState(0);
-
-  // PLACEHOLDER for adding size to cart
-  const size = 'S';
+  const [size, setSize] = useState('S');
+  const [quantity, setQuantity] = useState(1);
 
   return (
     <div className="flex ">
@@ -24,8 +24,20 @@ export default function ProductPage({
         <p>{description}</p>
 
         <div className="flex gap-2">
+          <Input
+            type="number"
+            value={quantity}
+            onChange={(e) => setQuantity(parseInt(e.target.value))}
+            className="w-12"
+          />
+
           {sizes.map((e) => (
-            <Button variant="outline" key={e}>
+            <Button
+              variant="outline"
+              key={e}
+              onClick={() => setSize(e)}
+              className={e === size ? 'border-black' : ''}
+            >
               {e}
             </Button>
           ))}
@@ -41,6 +53,7 @@ export default function ProductPage({
               description,
               image,
               size,
+              quantity,
             });
           }}
         >

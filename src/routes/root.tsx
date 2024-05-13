@@ -20,6 +20,7 @@ export interface Selection {
   description: string;
   image: string;
   size: string;
+  quantity: number;
 }
 
 /* NEED TO FETCH PRODUCT FROM API */
