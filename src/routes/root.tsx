@@ -23,17 +23,27 @@ const classicTee: Product = {
   sizes: ['S', 'M', 'L'],
 };
 
+export interface Selection {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  image: string;
+  size: string;
+}
 /* NEED TO FETCH PRODUCT FROM API */
 
 export default function Root() {
-  // const [count, setCount] = useState(0);
-  const [cart, setCart] = useState([classicTee]);
+  const [cart, setCart] = useState([] as Selection[]);
+
+  function addToCart(product: Selection) {
+    setCart([...cart, product]);
+  }
 
   return (
     <>
       <nav className="w-screen max-w-full py-6">
         <div className="flex bg-[#F6F6F7] pr-4 justify-end md:justify-center ">
-          {/* change on mobile to icon */}
           <div className="flex justify-end gap-2 items-center md:w-10/12">
             <Cart cart={cart} />
           </div>
@@ -41,7 +51,11 @@ export default function Root() {
       </nav>
 
       <div className="card">
-        <ProductPage key={classicTee.id} {...classicTee} />
+        <ProductPage
+          key={classicTee.id}
+          {...classicTee}
+          addToCart={addToCart}
+        />
       </div>
     </>
   );

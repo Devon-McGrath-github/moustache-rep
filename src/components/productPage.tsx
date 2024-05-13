@@ -1,5 +1,6 @@
-import { Product } from '@/routes/root';
+import { Product, Selection } from '@/routes/root';
 import { Button } from './ui/button';
+import { useState } from 'react';
 
 export default function ProductPage({
   title,
@@ -7,16 +8,36 @@ export default function ProductPage({
   description,
   image,
   sizes,
-}: Product) {
+  addToCart,
+}: Product & { addToCart: (product: Selection) => void }) {
+  const [count, setCount] = useState(0);
+
+  // PLACEHOLDER for adding size to cart
+  const size = 'S';
+
   return (
-    <div>
+    <div className="flex ">
       <img src={image} alt={'Image of ' + title} />
-      <h1>{title}</h1>
-      <h3>{price}</h3>
-      <p>{description}</p>
-      {sizes.map((e) => (
-        <Button>{e}</Button>
-      ))}
+      <div>
+        <h1>{title}</h1>
+        <h3>{price}</h3>
+        <p>{description}</p>
+
+        <div className="flex gap-2">
+          {sizes.map((e) => (
+            <Button variant="outline">{e}</Button>
+          ))}
+        </div>
+
+        <Button
+          onClick={() => {
+            setCount(count + 1);
+            addToCart({ id: count, title, price, description, image, size });
+          }}
+        >
+          Add to Cart
+        </Button>
+      </div>
     </div>
   );
 }

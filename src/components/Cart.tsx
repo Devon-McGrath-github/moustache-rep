@@ -1,4 +1,4 @@
-import { Product } from '@/routes/root';
+import { Selection } from '@/routes/root';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,7 +9,7 @@ import { ShoppingCartIcon } from 'lucide-react';
 import CartItem from './CartItem';
 
 interface CartProps {
-  cart: Product[];
+  cart: Selection[];
 }
 
 export default function Cart({ cart }: CartProps) {
@@ -23,7 +23,7 @@ export default function Cart({ cart }: CartProps) {
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        {cart.map((product: Product) => (
+        {cart.map((product: Selection) => (
           <>
             <DropdownMenuItem key={product.id}>
               <CartItem {...product} />
