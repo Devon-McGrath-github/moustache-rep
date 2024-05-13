@@ -24,9 +24,12 @@ export default function ProductPage({
         <p>{description}</p>
 
         <div className="flex gap-2">
+          {/* add validation to input - prevent submission of values outside min/max */}
           <Input
             type="number"
             value={quantity}
+            min="1"
+            max="99"
             onChange={(e) => setQuantity(parseInt(e.target.value))}
             className="w-12"
           />
