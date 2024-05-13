@@ -23,6 +23,11 @@ export default function Cart({ cart }: CartProps) {
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
+        {cart.length === 0 && (
+          <DropdownMenuItem>
+            <p>Your cart is empty</p>
+          </DropdownMenuItem>
+        )}
         {cart.map((product: Selection) => (
           <>
             <DropdownMenuItem key={product.id}>
