@@ -6,7 +6,7 @@ export default function CartItem({ title, price, image, size }: Selection) {
       <img src={image} alt={'Image of ' + title} className="w-12" />
       <div className="flex flex-col gap-2">
         <h1>{title}</h1>
-        <h3>{price}</h3>
+        <h3>${price}</h3>
         <p>{size}</p>
       </div>
     </div>

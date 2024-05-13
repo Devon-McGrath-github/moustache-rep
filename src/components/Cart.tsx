@@ -29,11 +29,9 @@ export default function Cart({ cart }: CartProps) {
           </DropdownMenuItem>
         )}
         {cart.map((product: Selection) => (
-          <>
-            <DropdownMenuItem key={product.id}>
-              <CartItem {...product} />
-            </DropdownMenuItem>
-          </>
+          <DropdownMenuItem key={product.id + product.title}>
+            <CartItem {...product} key={product.id} />
+          </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
     </DropdownMenu>

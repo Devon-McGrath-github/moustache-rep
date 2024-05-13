@@ -5,7 +5,7 @@ import Cart from '@/components/Cart';
 import ProductPage from '@/components/ProductPage';
 
 export interface Product {
-  id: number;
+  id: string;
   title: string;
   price: number;
   description: string;
@@ -13,25 +13,25 @@ export interface Product {
   sizes: string[];
 }
 
-const classicTee: Product = {
-  id: 1,
-  title: 'Classic Tee',
-  price: 75.0,
-  description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum consectetur enim, vitae egestas neque fermentum sit amet. Integer volutpat magna ut vulputate vulputate. Donec mattis purus vel lacinia convallis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras sed aliquam nisl. Sed ultrices erat nulla. Phasellus gravida mauris sed magna condimentum viverra sed sit amet odio.',
-  image: classicTeeImage,
-  sizes: ['S', 'M', 'L'],
-};
-
 export interface Selection {
-  id: number;
+  id: string;
   title: string;
   price: number;
   description: string;
   image: string;
   size: string;
 }
+
 /* NEED TO FETCH PRODUCT FROM API */
+const classicTee: Product = {
+  id: '1adfsdf',
+  title: 'Classic Tee',
+  price: 75,
+  description:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum consectetur enim, vitae egestas neque fermentum sit amet. Integer volutpat magna ut vulputate vulputate. Donec mattis purus vel lacinia convallis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras sed aliquam nisl. Sed ultrices erat nulla. Phasellus gravida mauris sed magna condimentum viverra sed sit amet odio.',
+  image: classicTeeImage,
+  sizes: ['S', 'M', 'L'],
+};
 
 export default function Root() {
   const [cart, setCart] = useState([] as Selection[]);

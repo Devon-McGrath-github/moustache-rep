@@ -25,14 +25,23 @@ export default function ProductPage({
 
         <div className="flex gap-2">
           {sizes.map((e) => (
-            <Button variant="outline">{e}</Button>
+            <Button variant="outline" key={e}>
+              {e}
+            </Button>
           ))}
         </div>
 
         <Button
           onClick={() => {
             setCount(count + 1);
-            addToCart({ id: count, title, price, description, image, size });
+            addToCart({
+              id: count.toString(),
+              title,
+              price,
+              description,
+              image,
+              size,
+            });
           }}
         >
           Add to Cart
