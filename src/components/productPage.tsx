@@ -9,16 +9,14 @@ export default function ProductPage({
   sizes,
 }: Product) {
   return (
-    <>
-      <div>
-        <img src={image} alt={'Image of ' + title} />
-        <h1>{title}</h1>
-        <h3>{price}</h3>
-        <p>{description}</p>
-        {sizes.map((e) => (
-          <Button>{e}</Button>
-        ))}
-      </div>
-    </>
+    <div>
+      <img src={image} alt={'Image of ' + title} />
+      <h1>{title}</h1>
+      <h3>{price}</h3>
+      <p>{description}</p>
+      {sizes.map((e) => (
+        <Button>{e}</Button>
+      ))}
+    </div>
   );
 }

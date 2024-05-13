@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import viteLogo from '/vite.svg';
-import { createContext } from 'react';
-import ProductPage from '@/components/productPage';
+// import { createContext } from 'react';
 import classicTeeImage from '@/assets/classic-tee.jpg';
+import Cart from '@/components/Cart';
+import ProductPage from '@/components/ProductPage';
 
 export interface Product {
   id: number;
@@ -25,20 +25,20 @@ const classicTee: Product = {
 
 export default function Root() {
   // const [count, setCount] = useState(0);
+  const [cart, setCart] = useState([classicTee]);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-      </div>
+      <nav className="w-full py-6">
+        <div className="flex bg-[#F6F6F7] pr-4 justify-end md:justify-center ">
+          {/* change on mobile to icon */}
+          <div className="flex justify-end gap-2 items-center md:w-10/12">
+            <Cart cart={cart} />
+          </div>
+        </div>
+      </nav>
 
       <div className="card">
-        {/* <Button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </Button> */}
-
         <ProductPage key={classicTee.id} {...classicTee} />
       </div>
     </>
