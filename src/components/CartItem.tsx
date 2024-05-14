@@ -14,8 +14,10 @@ export default function CartItem({
         <h1>
           <strong>{title}</strong>
         </h1>
-        <h3>
-          {quantity} x ${price}
+        <h3 className="text-[#222222]">
+          <strong>
+            {quantity} x ${price}
+          </strong>
         </h3>
         <p>Size: {size}</p>
       </div>

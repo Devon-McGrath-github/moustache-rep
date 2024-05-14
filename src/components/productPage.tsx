@@ -15,6 +15,22 @@ export default function ProductPage({
   const [size, setSize] = useState('');
   const [quantity, setQuantity] = useState(1);
 
+  function cartHandler() {
+    setCount(count + 1);
+    // improve alert - use shadcn dialog component in separate component
+    size !== ''
+      ? addToCart({
+          id: count.toString(),
+          title,
+          price,
+          description,
+          image,
+          size,
+          quantity,
+        })
+      : alert('Please select a size');
+  }
+
   return (
     <div className="flex flex-col md:flex-row w-11/12 md:w-10/12 md:max-w-6xl mx-auto gap-2 pb-4">
       <img
@@ -26,15 +42,18 @@ export default function ProductPage({
         <h1 className="text-lg">
           <strong>{title}</strong>
         </h1>
+
         <h3 className="text-[#222222]">
           <strong>${price}</strong>
         </h3>
+
         <p>{description}</p>
 
         <div className="flex flex-col gap-2 ">
           <h2>
             Size & Quantity<span className="text-[#C90000]">*</span>
           </h2>
+
           <div className="flex gap-2">
             {/* add validation to input - prevent submission of values outside min/max */}
             <Input
@@ -61,18 +80,7 @@ export default function ProductPage({
 
           <Button
             variant="outline"
-            onClick={() => {
-              setCount(count + 1);
-              addToCart({
-                id: count.toString(),
-                title,
-                price,
-                description,
-                image,
-                size,
-                quantity,
-              });
-            }}
+            onClick={cartHandler}
             className={
               'w-full max-w-[12.6rem] border-black border-2 text-[#222222] hover:bg-[#222222] hover:text-white duration-200'
             }
