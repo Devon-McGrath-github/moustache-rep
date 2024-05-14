@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import classicTeeImage from '@/assets/classic-tee.jpg';
 import Cart from '@/components/Cart';
 import ProductPage from '@/components/ProductPage';
@@ -22,32 +22,20 @@ export interface Selection {
   quantity: number;
 }
 
-/* NEED TO FETCH PRODUCT FROM API */
-const classicTee: Product = {
-  id: '1adfsdf',
-  title: 'Classic Tee',
-  price: 75,
-  description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum consectetur enim, vitae egestas neque fermentum sit amet. Integer volutpat magna ut vulputate vulputate. Donec mattis purus vel lacinia convallis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras sed aliquam nisl. Sed ultrices erat nulla. Phasellus gravida mauris sed magna condimentum viverra sed sit amet odio.',
-  imageURL: classicTeeImage,
-  sizeOptions: [
-    {
-      id: 1,
-      label: 'S',
-    },
-    {
-      id: 2,
-      label: 'M',
-    },
-    {
-      id: 3,
-      label: 'L',
-    },
-  ],
-};
-
 export default function Root() {
+  const [product, setProduct] = useState<Product | null>(null);
   const [cart, setCart] = useState([] as Selection[]);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const response = await fetch(
+        `https://3sb655pz3a.execute-api.ap-southeast-2.amazonaws.com/live/product`
+      );
+      const data = await response.json();
+      setProduct(data);
+    };
+    fetchProduct();
+  }, []);
 
   function addToCart(product: Selection) {
     setCart([...cart, product]);
@@ -64,11 +52,9 @@ export default function Root() {
       </nav>
 
       <div className="card">
-        <ProductPage
-          key={classicTee.id}
-          {...classicTee}
-          addToCart={addToCart}
-        />
+        {product !== null && (
+          <ProductPage key={product.id} {...product} addToCart={addToCart} />
+        )}
       </div>
     </>
   );
