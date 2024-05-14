@@ -44,8 +44,8 @@ export default function Root() {
   return (
     <>
       <nav className="w-screen max-w-full py-6">
-        <div className="flex bg-[#F6F6F7] pr-4 justify-end md:justify-center ">
-          <div className="flex justify-end gap-2 items-center md:w-10/12">
+        <div className="flex bg-[#F6F6F7] pr-4 md:pr-0 justify-end md:justify-center ">
+          <div className="flex justify-end gap-2 items-center md:w-10/12 md:max-w-6xl">
             <Cart cart={cart} />
           </div>
         </div>
