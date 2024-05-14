@@ -8,7 +8,7 @@ export default function ProductPage({
   price,
   description,
   imageURL,
-  sizes,
+  sizeOptions,
   addToCart,
 }: Product & { addToCart: (product: Selection) => void }) {
   const [count, setCount] = useState(0);
@@ -66,14 +66,14 @@ export default function ProductPage({
               className={'w-12'}
             />
 
-            {sizes.map((e) => (
+            {sizeOptions.map((e) => (
               <Button
                 variant="outline"
-                key={e}
-                onClick={() => setSize(e)}
-                className={e === size ? 'border-black' : '' + ''}
+                key={e.id}
+                onClick={() => setSize(e.label)}
+                className={e.label === size ? 'border-black' : '' + ''}
               >
-                {e}
+                {e.label}
               </Button>
             ))}
           </div>
