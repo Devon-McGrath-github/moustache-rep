@@ -8,7 +8,7 @@ export interface Product {
   title: string;
   price: number;
   description: string;
-  image: string;
+  imageURL: string;
   sizes: string[];
 }
 
@@ -17,7 +17,7 @@ export interface Selection {
   title: string;
   price: number;
   description: string;
-  image: string;
+  imageURL: string;
   size: string;
   quantity: number;
 }
@@ -29,7 +29,7 @@ const classicTee: Product = {
   price: 75,
   description:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum consectetur enim, vitae egestas neque fermentum sit amet. Integer volutpat magna ut vulputate vulputate. Donec mattis purus vel lacinia convallis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras sed aliquam nisl. Sed ultrices erat nulla. Phasellus gravida mauris sed magna condimentum viverra sed sit amet odio.',
-  image: classicTeeImage,
+  imageURL: classicTeeImage,
   sizes: ['S', 'M', 'L'],
 };
 

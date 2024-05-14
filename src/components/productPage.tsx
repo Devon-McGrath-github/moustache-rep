@@ -7,7 +7,7 @@ export default function ProductPage({
   title,
   price,
   description,
-  image,
+  imageURL,
   sizes,
   addToCart,
 }: Product & { addToCart: (product: Selection) => void }) {
@@ -17,14 +17,14 @@ export default function ProductPage({
 
   function cartHandler() {
     setCount(count + 1);
-    // improve alert - use shadcn dialog component in separate component
+    // TODO: improve alert - use shadcn dialog component in separate component
     size !== ''
       ? addToCart({
           id: count.toString(),
           title,
           price,
           description,
-          image,
+          imageURL,
           size,
           quantity,
         })
@@ -34,7 +34,7 @@ export default function ProductPage({
   return (
     <div className="flex flex-col md:flex-row w-11/12 md:w-10/12 md:max-w-6xl mx-auto gap-2 pb-4">
       <img
-        src={image}
+        src={imageURL}
         alt={'Image of ' + title}
         className="mx-auto h-auto max-w-full max-h-[26rem] md:max-h-2/3 md:w-1/3"
       />
@@ -55,7 +55,7 @@ export default function ProductPage({
           </h2>
 
           <div className="flex gap-2">
-            {/* add validation to input - prevent submission of values outside min/max */}
+            {/* TODO: add validation to input - prevent submission of values outside min/max */}
             <Input
               type="number"
               value={quantity}
