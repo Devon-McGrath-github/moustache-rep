@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import classicTeeImage from '@/assets/classic-tee.jpg';
 import Cart from '@/components/Cart';
 import ProductPage from '@/components/ProductPage';
 
