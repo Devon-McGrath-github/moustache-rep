@@ -16,9 +16,13 @@ export default function ProductPage({
   const [quantity, setQuantity] = useState(1);
 
   return (
-    <div className="flex ">
-      <img src={image} alt={'Image of ' + title} />
-      <div>
+    <div className="flex flex-col md:flex-row md:w-10/12 mx-auto">
+      <img
+        src={image}
+        alt={'Image of ' + title}
+        className="mx-auto h-auto max-w-full max-h-2/3 md:w-1/3"
+      />
+      <div className="flex flex-col gap-2">
         <h1>{title}</h1>
         <h3>{price}</h3>
         <p>{description}</p>
@@ -28,8 +32,9 @@ export default function ProductPage({
           <Input
             type="number"
             value={quantity}
-            min="1"
-            max="99"
+            // min="1"
+            // max="99"
+            placeholder="1"
             onChange={(e) => setQuantity(parseInt(e.target.value))}
             className="w-12"
           />
@@ -59,6 +64,7 @@ export default function ProductPage({
               quantity,
             });
           }}
+          className="max-w-[12.6rem]"
         >
           Add to Cart
         </Button>
